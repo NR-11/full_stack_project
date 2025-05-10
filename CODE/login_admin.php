@@ -1,0 +1,99 @@
+<?php
+session_start();
+include 'connect.php';
+if (isset($_POST['login']) && isset($_POST['admin_email']) && isset($_POST['admin_pass'])) {
+    $admin_email = htmlspecialchars($_POST['admin_email']);
+    $admin_pass = htmlspecialchars($_POST['admin_pass']);
+    $query =  "SELECT * FROM admins WHERE Email='$admin_email' AND Pass='$admin_pass'";
+    $resault = mysqli_query($conn, $query);
+    if (mysqli_num_rows($resault) == 1) {
+        $row = mysqli_fetch_array($resault);
+        $_SESSION['ID'] = $row['Admin_id'];
+        $_SESSION['Email'] = $admin_email;
+        $_SESSION['F_Name'] = $row['F_Name'];
+        $_SESSION['L_Name'] = $row['L_Name'];
+        $_SESSION['Pass'] = $row['Pass'];
+        header("Location: admin_panal.php");
+        exit();
+    } else {
+        echo "<script>alert('Admin Not Found ');</script>";
+    }
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    body {
+        background-image: url('images/login_admin_bg.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        width: 550px;
+        text-align: center;
+        color: white;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .logo-container img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.5);
+        border: none;
+        padding: 10px;
+    }
+
+    .form-control::placeholder {
+        color: rgba(32, 32, 32, 0.8);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo"> <!-- ضع رابط صورة اللوجو هنا -->
+            <h2>INSIDER</h2>
+        </div>
+        <h3 class="text-center text-white mb-3">Admin Login</h3>
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="mb-3">
+                <input type="email" name="admin_email" class="form-control" placeholder="Enter your Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" name="admin_pass" class="form-control" placeholder="Enter your password"
+                    required>
+            </div>
+            <button type="submit" name="login" class="btn btn-primary w-100">Log in</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

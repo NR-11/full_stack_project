@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('images/insider_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .home-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 550px;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 80px;
+            /* تكبير اللوجو */
+        }
+
+        .btn {
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home-container">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <h1 class="text-white">Welcome to INSIDER</h1>
+        <p class="text-white">Your ultimate source for the latest news and insights. </p>
+        <a href="signup.php" class="btn btn-primary w-100">Sign Up</a>
+        <a href="login.php" class="btn btn-secondary w-100">Log In</a>
+    </div>
+</body>
+
+</html>

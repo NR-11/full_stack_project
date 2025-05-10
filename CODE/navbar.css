@@ -1,0 +1,60 @@
+.navbar {
+    background-color: #414141;
+    padding: 15px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    width: 80px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.nav-link {
+    color: white;
+    font-size: 18px;
+    margin: 0 10px;
+    border: 2px solid #B3B3B3;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    background-color: #B3B3B3;
+    color: black;
+    border-color: white;
+}
+
+.form-control {
+    width: 500px;
+    background-color: #b3b3b3;
+    border: none;
+    color: white;
+    margin-left: 250px;
+    margin-right: 8px;
+}
+
+#button {
+    border-color: white;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#button:hover {
+    background-color: white;
+    color: #1E1E1E;
+}

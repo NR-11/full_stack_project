@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+        }
+
+        .container {
+            width: 800px;
+            padding: 40px;
+            background: #292929;
+            border-radius: 10px;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .btn-edit {
+            margin-bottom: 20px;
+        }
+
+        .comments-section {
+            margin-top: 30px;
+        }
+
+        .comment-card {
+            background: #383838;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .comment-title {
+            font-weight: bold;
+            color: #f8f9fa;
+        }
+
+        .comment-card div {
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-card i {
+            margin-right: 10px;
+        }
+
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center">User Profile</h2>
+
+        <div class="profile-info">
+            <p><b>Username:</b> John Doe</p>
+            <p><b>Email:</b> john@example.com</p>
+            <p><b>Password:</b> ********</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#edit_profile_modal">Edit Profile</button>
+        </div>
+
+        <button class="btn btn-danger">Delete Account</button>
+        <button class="btn btn-warning">Logout</button>
+        <hr>
+        <div class="comments-section">
+            <h3>User Comments</h3>
+
+            <div class="comment-card">
+                <div>
+                    <i class="fa-sharp fa-solid fa-newspaper"></i>
+                    <p class="comment-title">Breaking News: Market Hits Record High</p>
+                </div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-comment"></i>
+                    <p>Great analysis! I totally agree with this.</p>
+                </div>
+            </div>
+
+            <div class="comment-card">
+                <div>
+                    <i class="fa-sharp fa-solid fa-newspaper"></i>
+                    <p class="comment-title">Breaking News: Market Hits Record High</p>
+                </div>
+                <div>
+                    <i class="fa-sharp fa-solid fa-comment"></i>
+                    <p>Great analysis! I totally agree with this.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div>
+        <!-- Modal -->
+        <div class="modal fade" id="edit_profile_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header bg-dark">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="First Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Last Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success w-100">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        document.getElementById('editProfileForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // منع إعادة تحميل الصفحة
+
+            const updatedUser = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            console.log("User updated profile with:", updatedUser);
+
+            // هنا تقدر تبعت البيانات للـ backend باستخدام fetch أو axios لما تجهز
+            // مثال:
+            /*
+            fetch('/api/update-user', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedUser)
+            }).then(res => res.json()).then(data => {
+                console.log(data);
+            });
+            */
+
+            // غلق المودال بعد الحفظ
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
+            modal.hide();
+        });
+    </script>
+</body>
+
+</html>
